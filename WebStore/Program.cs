@@ -1,7 +1,6 @@
-﻿
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
+using WebStore.Entities;
 using WebStore.Assignments;
-//using WebStore.Entities;
 
 namespace WebStore
 {
@@ -9,34 +8,24 @@ namespace WebStore
     {
         static async Task Main(string[] args)
         {
+            var options = new DbContextOptionsBuilder<Oppimistehtävä3Context>()
+                .UseNpgsql("Host=localhost;Port=5432;Database=Oppimistehtävä 3;Username=postgres;Password=!Kim2003")
+                .Options;
 
-            /* TODO: Uncomment this code after generating the entity models
+            using var context = new Oppimistehtävä3Context(options);
 
-            using var context = new WebStoreContext();
+            var Assignments = new LinqQueriesAssignment(context);
 
-
-            var Assigments = new LinqQueriesAssignment(context);
-
-            await Assigments.Task01_ListAllCustomers();
-
-            await Assigments.Task02_ListOrdersWithItemCount();
-
-            await Assigments.Task03_ListProductsByDescendingPrice();
-
-            await Assigments.Task04_ListPendingOrdersWithTotalPrice();
-
-            await Assigments.Task05_OrderCountPerCustomer();
-
-            await Assigments.Task06_Top3CustomersByOrderValue();
-
-            await Assigments.Task07_RecentOrders();
-
-            await Assigments.Task08_TotalSoldPerProduct();
-
-            await Assigments.Task09_DiscountedOrders();
-
-            await Assigments.Task10_AdvancedQueryExample();
-            */
+            await Assignments.Task01_ListAllCustomers();
+            await Assignments.Task02_ListOrdersWithItemCount();
+            await Assignments.Task03_ListProductsByDescendingPrice();
+            await Assignments.Task04_ListPendingOrdersWithTotalPrice();
+            await Assignments.Task05_OrderCountPerCustomer();
+            await Assignments.Task06_Top3CustomersByOrderValue();
+            await Assignments.Task07_RecentOrders();
+            await Assignments.Task08_TotalSoldPerProduct();
+            await Assignments.Task09_DiscountedOrders();
+            await Assignments.Task10_AdvancedQueryExample();
 
             Console.WriteLine("Press any key to exit...");
             Console.ReadKey();
