@@ -9,7 +9,7 @@ namespace WebStore
         static async Task Main(string[] args)
         {
             var options = new DbContextOptionsBuilder<Oppimistehtävä3Context>()
-                .UseNpgsql("Host=localhost;Port=5432;Database=Oppimistehtävä 3;Username=postgres;Password=!Kim2003")
+                .UseNpgsql("Host=localhost;Port=5432;Database=Oppimistehtävä 3;Username=postgres;Password=")
                 .Options;
 
             using var context = new Oppimistehtävä3Context(options);
